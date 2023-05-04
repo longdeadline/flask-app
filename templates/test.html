@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="icon" type="image/png"  href="{{ url_for('static', filename='favicon.png') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='all.css') }}">
+	
+    <title>{{ test.title }}</title>
+
+
+    
+
+    
+</head>
+<body data-clean-url="true">
+
+<!-- Preloader -->
+<div id="page-loading-blocs-notifaction" class="page-preloader"></div>
+<!-- Preloader END -->
+
+
+<!-- Main container -->
+<div class="page-container">
+<div class="bloc l-bloc" id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-12">
+				<div class="row">
+					<div class="col l-bloc">
+						<h1 class="mb-4 text-lg-center mx-auto d-block mb-lg-4">
+							{{ test.title }}
+						</h1>
+						<form method="POST" action="{{ url_for('submit', test_id=test.id) }}">
+							{% for question in test.questions %}
+						<div class="row mt-lg-3 mb-lg-3 ms-lg-3 me-lg-3 pt-lg-1 pb-lg-1 ps-lg-1 pe-lg-1 bgc-6396">
+							<div class="col">
+								<h2 class="mb-4">
+									{{ question.text }}
+								</h2>
+								{% for i, choice in enumerate(question.choices) %}
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="{{ question.id }}" value="{{ i }}" required>
+									<label class="form-check-label label-style ">
+										{{ choice }}
+									</label>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+							{% endfor %}
+							<div class="row">
+									<div class="col">
+										<div class="form-group mb-3">
+											<label class="form-label">
+												My Name
+											</label>
+											<input class="form-control mb-lg-3" placeholder="Ivanov Ivan" maxlength="30" required="" data-validation-required-message="" name="user">
+											<div class="text-center">
+												<button type="submit" class="btn btn-d btn-lg btn-style">Submit</button>
+											</div>
+										</div>
+									</div>
+								</div>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1',this)"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32 32"><path class="scroll-to-top-btn-icon" d="M30,22.656l-14-13-14,13"/></svg></a>
+
+
+
+			</div>
+			<!-- Main container END -->
+		<!-- Additional JS -->
+		<script src="../js/all.js?8875"></script>
+		<!-- Additional JS END -->
+</body>
+</html>
